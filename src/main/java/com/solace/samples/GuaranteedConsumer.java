@@ -36,10 +36,10 @@ public class GuaranteedConsumer {
 
     public static void main(String... args) throws JCSMPException, InterruptedException {
         
-        String host = "";
-        String vpn = "";
-        String username = "";
-        String password = "";
+        String host = "tcp://vmr-mr8v6yiwieih.messaging.solace.cloud:20256";
+        String vpn = "msgvpn-rwtxvklrlfp";
+        String username = "solace-cloud-client";
+        String password = "bgpmucb2psrre7eo6bt00cc6cu";
         String queueName = "testQueue";
 
         if (host.equals("")) {

@@ -40,10 +40,10 @@ public class ProvisionQueue {
 
     public static void main(String... args) throws JCSMPException, InterruptedException {
 
-        String host = "";
-        String vpn = "";
-        String username = "";
-        String password = "";
+        String host = "localhost"; //"tcp://vmr-mr8v6yiwieih.messaging.solace.cloud:20256";
+        String vpn = "default"; //"msgvpn-rwtxvklrlfp";
+        String username = "default"; //"solace-cloud-client";
+        String password = "bgpmucb2psrre7eo6bt00cc6cu";
         String queueName = "provisionedQueue";
 
         if (host.equals("")) {
@@ -70,12 +70,12 @@ public class ProvisionQueue {
         endpointProps.setPermission(EndpointProperties.PERMISSION_CONSUME);
         endpointProps.setAccessType(EndpointProperties.ACCESSTYPE_EXCLUSIVE);
         // create the queue object locally
-        final Queue queue = JCSMPFactory.onlyInstance().createQueue(queueName);
+        //final Queue queue = JCSMPFactory.onlyInstance().createQueue(queueName);
         // Actually provision it, and do not fail if it already exists
-        session.provision(queue, endpointProps, JCSMPSession.FLAG_IGNORE_ALREADY_EXISTS);
+        //session.provision(queue, endpointProps, JCSMPSession.FLAG_IGNORE_ALREADY_EXISTS);
 
         // create the non-durable/temporary queue object locally
-        //final Queue queue = session.createTemporaryQueue("temp_" + queueName);
+        final Queue queue = session.createTemporaryQueue("temp_" + queueName);
 
         // Create a Flow be able to bind to and consume messages from the Queue.
         final ConsumerFlowProperties flow_prop = new ConsumerFlowProperties();
